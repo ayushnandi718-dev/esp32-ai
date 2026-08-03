@@ -34,8 +34,9 @@ jobs:
       - name: Prepare a small TinyStories slice (16MB)
         run: uv run python data/prepare.py --vocab 32768 --max-bytes 16777216
       - name: Train a tiny ple checkpoint (smoke, CPU only)
-        run: uv run python src/train.py --arm ple --vocab 32768 --target-core 590000 \
-          --batch-size 16 --seq-len 256 --steps 100 --tag ci
+        run: |
+          uv run python src/train.py --arm ple --vocab 32768 --target-core 590000 \
+            --batch-size 16 --seq-len 256 --steps 100 --tag ci
       - name: Export model.bin + golden logits
         run: uv run python src/export.py ple-ci-s0
       - name: Build host verifier

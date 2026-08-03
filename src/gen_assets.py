@@ -4,6 +4,7 @@
   - prints the prompt token ids for a fixed demo prompt to paste into the sketch.
 """
 
+import argparse
 import os
 
 from tokenizers import Tokenizer
