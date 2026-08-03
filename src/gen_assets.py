@@ -15,7 +15,11 @@ PROMPT = "Once upon a time"
 
 
 def main():
-    tok = Tokenizer.from_file(TOK)
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tok", default=TOK,
+                    help="path to the BPE tokenizer JSON (default data/bpe32768.json)")
+    args = ap.parse_args()
+    tok = Tokenizer.from_file(args.tok)
     V = tok.get_vocab_size()
 
     # Raw bytes per token: decode single-id sequences. For the ASCII TinyStories
